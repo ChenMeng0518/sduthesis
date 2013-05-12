@@ -1,16 +1,25 @@
 % !Mode:: "TeX:UTF-8"
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{sduthesis}[2013/05/11 1.0.2 Shandong University Thesis Template]
+\ProvidesClass{sduthesis}[2013/05/11 1.1.0 Shandong University Thesis Template]
 %
 \newif\ifprint\printfalse
 \DeclareOption{print}{\printtrue}
-\ProcessOptions
+\ProcessOptions\relax
 \ifprint
   \LoadClass[a4paper, 12pt]{book}
 	\newcommand{\GeoOptions}{left=4cm, right=2.5cm, top=3.5cm, bottom=2.5cm, xetex}
 \else
 	\LoadClass[a4paper, 12pt, openany]{book}
 	\newcommand{\GeoOptions}{left=2.5cm, right=2.5cm, top=3.5cm, bottom=2.5cm, xetex}
+\fi
+%
+\newif\ifRoman\Romanfalse
+\DeclareOption{roman}{\Romantrue}
+\ProcessOptions\relax
+\ifRoman
+	\newcommand{\RomanName}{Times New Roman}
+\else
+	\newcommand{\RomanName}{TeX Gyre Pagella}
 \fi
 \DeclareOption*{%
 \PassOptionsToClass{\CurrentOption}{book}%
@@ -29,7 +38,7 @@
 \XeTeXlinebreaklocale "zh"			%使用中文的换行风格
 \XeTeXlinebreakskip = 0pt plus 1pt	%调整换行逻辑的弹性大小
 % 字体映射
-\newcommand\fontnameroman{TeX Gyre Pagella}%TeX Gyre Pagella/Times New Roman
+\newcommand\fontnameroman{\RomanName}%TeX Gyre Pagella/Times New Roman
 \newcommand\fontnameblack{Verdana}%Verdana
 \newcommand\fontnamesans{Arial}%Calibri
 \newcommand\fontnamemono{Inconsolata}%Courier New/Inconsolata
@@ -99,12 +108,6 @@
 \xeCJKfontsize{5bp}{6pt}{.1pt}{.1pt}}{}}
 %======================== 字号设置 ========================
 %------------------------ 页面设置 ------------------------
-% 边距
-%\ifprint
-%\RequirePackage[left=4cm, right=2.5cm, top=3.5cm, bottom=2.5cm, xetex]{geometry}
-%\else
-%\RequirePackage[left=2.5cm, right=2.5cm, top=3.5cm, bottom=2.5cm, xetex]{geometry}
-%\fi
 \RequirePackage[\GeoOptions]{geometry}
 % 页眉页脚
 \RequirePackage{fancyhdr}
@@ -133,10 +136,21 @@
 %======================== 页面设置 ========================
 %------------------------ 章节样式 ------------------------
 \RequirePackage[center]{titlesec}
-\titleformat{\chapter}{\centering\bfseries\zihao{3-}}{第\,\CJKnumber{\arabic{chapter}}\,章}{1em}{}
+
+\ifprint
+	\relax
+\else
+	\titleclass{\chapter}{straight}
+\fi
+\titleformat{\chapter}[hang]{\centering\bfseries\zihao{3-}}{第\CJKnumber{\arabic{chapter}}章}{1em}{}
 \titleformat{\section}{\centering\bfseries\zihao{4}}{$\S$\,\thesection}{1em}{}
 \titleformat{\subsection}{\centering\bfseries\zihao{4-}}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\centering\bfseries\zihao{5}}{\thesubsubsection}{1em}{}
+
+\RequirePackage{titletoc}
+\titlecontents{chapter}[0pt]{\vspace{.1\baselineskip}\bfseries}
+    {第\CJKnumber{\thecontentslabel}章\hspace{2.8mm}}{}
+    {\hspace{.5em}\titlerule*[10pt]{}\contentspage}
 %======================== 章节样式 ========================
 %------------------------ 中文重定义 ------------------------
 % 今日
@@ -319,12 +333,13 @@
 \vfill\eject
 \setcounter{page}{1}
 }
-\newcommand{\maketableofcontents}{%
+\newcommand{\MakeTableofContents}{%
 \pagenumbering{Roman}
 \tableofcontents
 \vfill\eject
 \pagenumbering{arabic}\setcounter{page}{1}
 }
+\newcommand{\maketableofcontents}{\MakeTableofContents}
 %======================== M A  K E ========================
 %------------------------ 常用宏包 ------------------------
 \RequirePackage[numbers, sort&compress]{natbib}

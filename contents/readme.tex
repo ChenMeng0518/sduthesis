@@ -54,7 +54,7 @@
 \end{tabular}
 \end{center}
 
-写作的时候需要打开\texttt{contents}目录下的\texttt{titlepageinfo.tex}文件填写扉页信息；正文内容只需写在\texttt{main.tex}之中即可，当然为了保证主文件的简洁你也可以在\texttt{contents}目录下新建一些文件用来书写正文，不过记得保存为UTF8编码格式并在主文件中使用\verb|\input|调用。
+写作的时候需要打开\texttt{contents}目录下的\texttt{titlepageinfo.tex}文件填写扉页信息；正文内容只需写在\texttt{SDUthesistemplate.tex}之中即可，当然为了保证主文件的简洁你也可以在\texttt{contents}目录下新建一些文件用来书写正文，不过记得保存为UTF8编码格式并在主文件中使用\verb|\input|调用。
 \section{继续说编译的方法}
 在章节\ref{section:howtocompile}中已经提到，使用模板需要用\XeLaTeX{}进行编译。如果你不清楚这是什么，推荐你查看\href{ http://blog.renren.com/blog/bp/Q74DZitxxv}{这篇文档}以及\href{http://blog.renren.com/blog/bp/Q7LjRQLBcl}{这篇文档}还有\href{http://bbs.ctex.org/forum.php}{这个论坛}。
 
@@ -68,7 +68,7 @@
 \verb|\song|& 宋体\\
 \verb|\kai|& 楷体\\
 \verb|\hei|& 黑体\\
-\verb|\fsont|& 仿宋体\\
+\verb|\fsong|& 仿宋体\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -94,7 +94,7 @@ E = m c^2.
 \begin{figure}
 [htbp]
 \centering
-\includegraphics[width = .8\textwidth]{SDULogo.pdf}
+\includegraphics[width = .4\textwidth]{SDULogo.pdf}
 \caption{一个 \emph{pdf} 图片的例子}\label{Fig:pdf}
 \end{figure}
 
@@ -102,6 +102,7 @@ E = m c^2.
 \begin{table}
 [htbp]
 \centering
+\caption{三线表的示例}\label{Tab:3lines}
 \begin{tabular}
 {ccc}
 \toprule
@@ -111,7 +112,6 @@ Ch'en Meng& 00000001& \LaTeX{}\\
 Chen Chiang& 00000002& 收集书籍\\
 \bottomrule
 \end{tabular}
-\caption{三线表的示例}\label{Tab:3lines}
 \end{table}
 \chapter{其他事项}
 这个模板是通过研读黄正华老师为武汉大学硕博学生写的\LaTeX{}模板之后由我重写了全部代码而成的，转载和分发都请随意。\footnote{其实我想说遵循GNU的某某文档来着，但是记不得是什么了，允许我偷懒一下。}
