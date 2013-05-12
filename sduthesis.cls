@@ -1,16 +1,16 @@
 % !Mode:: "TeX:UTF-8"
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{sduthesis}[2013/05/11 1.1.0 Shandong University Thesis Template]
+\ProvidesClass{sduthesis}[2013/05/12 1.1.4 Shandong University Thesis Template]
 %
 \newif\ifprint\printfalse
 \DeclareOption{print}{\printtrue}
 \ProcessOptions\relax
 \ifprint
   \LoadClass[a4paper, 12pt]{book}
-	\newcommand{\GeoOptions}{left=4cm, right=2.5cm, top=3.5cm, bottom=2.5cm, xetex}
+	\newcommand{\GeoOptions}{left=3cm, right=2cm, top=2.5cm, bottom=2.5cm, xetex}
 \else
 	\LoadClass[a4paper, 12pt, openany]{book}
-	\newcommand{\GeoOptions}{left=2.5cm, right=2.5cm, top=3.5cm, bottom=2.5cm, xetex}
+	\newcommand{\GeoOptions}{left=2cm, right=2cm, top=2.5cm, bottom=2.5cm, xetex}
 \fi
 %
 \newif\ifRoman\Romanfalse
@@ -142,10 +142,10 @@
 \else
 	\titleclass{\chapter}{straight}
 \fi
-\titleformat{\chapter}[hang]{\centering\bfseries\zihao{3-}}{第\CJKnumber{\arabic{chapter}}章}{1em}{}
+\titleformat{\chapter}[hang]{\centering\bfseries\zihao{3}}{第\CJKnumber{\arabic{chapter}}章}{1em}{}
 \titleformat{\section}{\centering\bfseries\zihao{4}}{$\S$\,\thesection}{1em}{}
 \titleformat{\subsection}{\centering\bfseries\zihao{4-}}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\centering\bfseries\zihao{5}}{\thesubsubsection}{1em}{}
+\titleformat{\subsubsection}{\centering\zihao{4}}{\thesubsubsection}{1em}{}
 
 \RequirePackage{titletoc}
 \titlecontents{chapter}[0pt]{\vspace{.1\baselineskip}\bfseries}
@@ -319,6 +319,42 @@
 \end{titlepage}
 }
 %======================== 声    明 ========================
+%------------------------ 摘    要 ------------------------
+\newcommand\cnabstractname{摘\quad要}
+\newcommand\enabstractname{ABSTRACT}
+\newcommand\cnkeywordsname{关键词}
+\newcommand\cnkeywords[1]{\vspace{1cm}\noindent{\bfseries\zihao{4-}\cnkeywordsname: }#1}
+\newcommand\enkeywordsname{Key words}
+\newcommand\enkeywords[1]{\vspace{1cm}\noindent{\bfseries\zihao{4-}\enkeywordsname: }#1}
+
+\newenvironment{cnabstract}{%
+	\newpage
+	\centering
+	\begin{minipage}{.9\textwidth}
+	\centerline{\zihao{3-}\bfseries\cnabstractname}\vspace{.3cm}
+	\centering
+	\begin{minipage}[c]{.85\textwidth}
+	\setlength{\parindent}{2em}
+	\zihao{4-}
+}{
+\end{minipage}
+\end{minipage}
+\clearpage
+}
+\newenvironment{enabstract}{%
+	\newpage
+	\centering
+	\begin{minipage}{.9\textwidth}
+	\centerline{\zihao{3-}\bfseries\enabstractname}\vspace{.3cm}
+	\centering
+	\begin{minipage}{.85\textwidth}
+	\setlength{\parindent}{1.2em}
+}{
+\end{minipage}
+\end{minipage}
+\clearpage
+}
+%======================== 摘    要 ========================
 %------------------------ M A  K E ------------------------
 \newcommand{\maketitlepagestatement}{%
 \maketitlepage
