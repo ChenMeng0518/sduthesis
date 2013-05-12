@@ -1,6 +1,6 @@
 % !Mode:: "TeX:UTF-8"
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{sduthesis}[2013/05/11 1.0 Shandong University Thesis Template]
+\ProvidesClass{sduthesis}[2013/05/11 1.0.2 Shandong University Thesis Template]
 %
 \newif\ifprint\printfalse
 \DeclareOption{print}{\printtrue}
@@ -241,7 +241,7 @@
 	\vspace*{2cm}
 	{
 		\noindent
-		{\textbf{\zihao{1}山东大学}}\\[3mm]
+		{\includegraphics[width = .6\textwidth]{SDU.pdf}}\\[3mm]
 		{\zihao{2}学~士~学~位~论~文}
 	}
 	\par

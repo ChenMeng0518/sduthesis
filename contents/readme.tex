@@ -88,14 +88,14 @@ E = m c^2.
 \label{Equ:emc2}
 \end{equation}
 \section{图形和表格}
-这里澄清一个长久的误会。\LaTeX{}支持的不仅仅是\texttt{.eps}格式的图档，事实上常见的\texttt{.jpg}和\texttt{.png}格式的图档\LaTeX{}都是支持的。因此为了在\LaTeX{}格式标记的文档中插入图片，无需将图片特意转换为\texttt{.eps}格式。
+这里澄清一个长久的误会。\LaTeX{}支持的不仅仅是\texttt{.eps}格式的图档，事实上常见的\texttt{.jpg}和\texttt{.png}甚至\texttt{.pdf}格式的图档\LaTeX{}都是支持的。因此为了在\LaTeX{}格式标记的文档中插入图片，无需将图片特意转换为\texttt{.eps}格式。
 
-使用\texttt{graphicx}宏包提供的\verb|\includegraphics[options]{name}|命令可以插入图档。如图\ref{Fig:jpg}就是用命令\verb|\includegraphics[width = .8\textwidth]{Daisy.jpg}|插入的\texttt{.jpg}格式图档。
+使用\texttt{graphicx}宏包提供的\verb|\includegraphics[options]{name}|命令可以插入图档。如图\ref{Fig:pdf}就是用命令\verb|\includegraphics[width = .8\textwidth]{SDULogo.pdf}|插入的\texttt{.pdf}格式图档。
 \begin{figure}
 [htbp]
 \centering
-\includegraphics[width = .8\textwidth]{Daisy.jpg}
-\caption{一个彩色 \emph{jpg} 图片的例子}\label{Fig:jpg}
+\includegraphics[width = .8\textwidth]{SDULogo.pdf}
+\caption{一个 \emph{pdf} 图片的例子}\label{Fig:pdf}
 \end{figure}
 
 建议使用标准的“三线表”代替Microsoft Office中常见的表格，充满方框的表格给人以舒服的感觉，很烦很讨厌。例如一个简单的三线表如表\ref{Tab:3lines}所示。

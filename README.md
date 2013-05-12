@@ -1,5 +1,5 @@
 ## 扉页预览
-![](http://ww2.sinaimg.cn/large/818901c1jw1e4kz4q5v2uj20mz0whgmq.jpg)
+![](http://ww1.sinaimg.cn/large/818901c1jw1e4lhici2fjj20mz0whwfy.jpg)
 ## 重要的说明
 ### 安装字体
 模板实现了中英文混排，中文字体使用的是 Adobe 家的字体，你可以在[这里](http://ishare.iask.sina.com.cn/f/15105086.html)下载到。对于 Windows 系统，安装字体很简单，只需要把下载得到的字体文件解压到`C:\\windows\Fonts\`下即可（系统会自动安装）；对于 *nix 系统，安装相对麻烦，不过相信使用这些系统的你一定知道怎么办。另外还有微软雅黑字体，这在 Windows Vista 及以后的 Windows 系列系统中是默认字体，如果需要，请到[这里](http://xiazai.zol.com.cn/detail/26/253442.shtml)下载。
