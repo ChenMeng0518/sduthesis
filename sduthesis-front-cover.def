@@ -1,0 +1,55 @@
+\newtoks\fenlei		% 中图分类号
+\newtoks\DWdaihao	% 单位代号
+\newtoks\miji		% 密级
+\newtoks\StuNum		% 学号
+\newtoks\Ctitle		% 中文标题
+\newtoks\Cauthor	% 作者中文名
+\newtoks\Cmajor		% 专业
+\newtoks\Csuperver	% 导师
+\newtoks\Cdate		% 中文日期
+\newtoks\Dpart		% 学院
+\newtoks\Grade		% 年级
+
+\RequirePackage{makecell}
+\newcommand{\LeftLength}{2.3cm}
+\newcommand{\RightLength}{5.5cm}
+\newcommand{\Mcs}[1]{\makebox[\LeftLength][s]{{\zihao{3}\bfseries\kaishu{}#1}}}
+\newcommand{\Mcc}[1]{\makebox[\RightLength][c]{{\zihao{-3}\songti{}#1}}}
+\newcommand{\maketitlepage}{%
+\thispagestyle{empty}
+\begin{center}
+~
+\vskip 8mm\relax
+{
+	{\includegraphics[width = .7\textwidth]{SDUWords.jpg}}\\[3mm]
+	{\scalebox{4}{\fzbHei{}毕业论文（设计）}}
+}
+\par \vskip 15mm \relax
+{
+	\begin{flushleft}
+		{\zihao{3}\heiti{}论文（设计）题目：}
+	\end{flushleft}
+}
+\vfill
+{
+	\noindent
+	\zihao{-1}\kaishu\the\Ctitle
+}
+\vfill
+{
+	\begin{tabular}{p{\LeftLength}p{\RightLength}}
+	\Mcs{姓名}& \Mcc{\the\Cauthor}\\[-.8mm]\cline{2-2}\\[-4mm]
+	\Mcs{学号}& \Mcc{\the\StuNum}\\[-.8mm]\cline{2-2}\\[-4mm]
+	\Mcs{学院}& \Mcc{\the\Dpart}\\[-.8mm]\cline{2-2}\\[-4mm]
+	\Mcs{专业}& \Mcc{\the\Cmajor}\\[-.8mm]\cline{2-2}\\[-4mm]
+	\Mcs{年级}& \Mcc{\the\Grade}\\[-.8mm]\cline{2-2}\\[-4mm]
+	\Mcs{指导老师}& \Mcc{\the\Csuperver}\\[-.8mm]\cline{2-2}
+	\end{tabular}
+}
+\par \vskip 20mm \relax
+{
+\zihao{3}\the\Cdate
+}
+\end{center}
+\clearpage
+}
