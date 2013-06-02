@@ -21,7 +21,7 @@
 ~
 \vskip 8mm\relax
 {
-	{\includegraphics[width = .7\textwidth]{SDUWords.png}}\\[3mm]
+	{\includegraphics[width = .7\textwidth]{SDUWords.jpg}}\\[3mm]
 	{\scalebox{4}{\fzbHei{}毕业论文（设计）}}
 }
 \par \vskip 15mm \relax
