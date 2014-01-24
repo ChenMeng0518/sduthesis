@@ -1,3 +1,23 @@
+# LaTeX temp files
+*.log
+*.aux
+*.dvi
+*.lof
+*.lot
+*.bit
+*.idx
+*.glo
+*.bbl
+*.ilg
+*.toc
+*.ind
+*.out
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+
 #################
 ## Eclipse
 #################
