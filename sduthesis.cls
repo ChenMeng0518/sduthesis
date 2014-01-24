@@ -106,7 +106,7 @@
 %------图表支持------
 \RequirePackage{graphicx}
 %----图档搜索路径----
-\graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}}
+\graphicspath{{figures/}{figure/}{pictures/}{picture/}{pic/}{pics/}{image/}{images/}}
 %----图档搜索路径----
 \RequirePackage{booktabs}
 %%----表格行距----
