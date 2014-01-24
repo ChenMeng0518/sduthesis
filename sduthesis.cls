@@ -1,52 +1,54 @@
 % !Mode:: "TeX:UTF-8"
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{sduthesis}[2013/05/31 2.0.0 Shandong University Thesis Template]
+\ProvidesClass{sduthesis}[2014/01/24 2.1.0 Shandong University Thesis Template]
 %------待解决------
 %chapter不另起一页，直接接在上文的后面。
 %------待解决------
 
-%------chstyle------
-\newif\ifchsstyle\chsstyletrue
-\DeclareOption{chsstyle}{\chsstyletrue}
-\DeclareOption{nochsstyle}{\chsstylefalse}
-%------chstyle------
+% ----- KVoptions Packages -----
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+\SetupKeyvalOptions{family=SDU, prefix=SDU@opt@, setkeys=\kvsetkeys}
+\newcommand{\ekv}[1]{\kvsetkeys{SDU}{#1}}
 
-%------print------
-\newif\ifprint\printfalse
-\newif\ifdprint\dprintfalse
+% ----- Declare Options -----
+% ----- CHSstyle
+\DeclareBoolOption[true]{chsstyle}
+\DeclareComplementaryOption{nochsstyle}{chsstyle}
+% ----- draft/print
+\DeclareBoolOption[false]{print}
+\DeclareComplementaryOption{noprint}{print}
+% ----- double/single
+\DeclareBoolOption[true]{double}
+\DeclareComplementaryOption{single}{double}
+% ----- Default Options
+\DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{ctexcap}}
+\LoadClass[a4paper, 12pt]{book}
+\ProcessKeyvalOptions*\relax
 
-\DeclareOption{noprint}{\dprintfalse\printfalse}
-\DeclareOption{print}{\printtrue}
-\DeclareOption{dprint}{\dprinttrue\printtrue}
-\ProcessOptions\relax
-\ifdprint\relax\else
-\PassOptionsToClass{openany}{book}
+\ifSDU@opt@double\relax\else
+	\PassOptionsToClass{openany}{book}
 \fi
 %------print------
-
-\LoadClass[a4paper, 12pt]{book}
-\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{ctexcap}}
-\ExecuteOptions{noprint,chsstyle} %默认参数
-\ProcessOptions\relax
 
 %------中文支持------
 \RequirePackage[noindent,nocap,UTF8]{ctexcap}
 %----字体名
 \RequirePackage{ifpdf,ifxetex}
 \ifpdf
-\newcommand{\fzbHei}{\heiti}
+	\newcommand{\fzbHei}{\heiti}
 \else
-\newCJKfontfamily[fzbighei]{\fzbHei}{方正大黑简体}
+	\newCJKfontfamily[fzbighei]{\fzbHei}{方正大黑简体}
 \fi
 %------中文支持------
 
 %------行距------
 \linespread{1.3}
-\addtolength{\parskip}{.3em}
+\addtolength{\parskip}{.3ex}
 %------行距------
 
 %------页面设置------
-\ifdprint
+\ifSDU@opt@double
 	\newcommand{\GeoOptions}{left=3.75cm, right=2.75cm, top=3cm, bottom=3cm}
 \else
 	\newcommand{\GeoOptions}{left=2.75cm, right=2.75cm, top=3cm, bottom=3cm}
@@ -74,11 +76,13 @@
 %----眉脚内容----
 \pagestyle{fancy}
 \fancyhf{}
-\ifchsstyle
+\makeatletter
+\ifSDU@opt@chsstyle
 \chead{\zihao{5}山东大学学士学位论文}
 \else
 \chead{\small Shandong University Bachelor Thesis}
 \fi
+\makeatother
 \cfoot{--{~\thepage~}--}
 %----眉脚内容----
 %------页眉页脚------
@@ -130,9 +134,11 @@
 \hypersetup{unicode}
 \hypersetup{colorlinks=true}
 \hypersetup{linkcolor=black}
-\ifprint
+\makeatletter
+\ifSDU@opt@print
 	\hypersetup{allcolors=black}
 \else\relax\fi
+\makeatother
 %------交叉引用------
 
 %------参考文献------
@@ -157,7 +163,7 @@
 \clearpage
 }
 
-\newcommand\cnabstractname{摘\quad要}
+\newcommand\cnabstractname{摘\quad{}要}
 \newcommand\cnkeywordsname{关键词}
 \newcommand\cnkeywords[1]{\vspace{1cm}\noindent{\bfseries\zihao{-4}\cnkeywordsname: }#1}
 \newenvironment{cnabstract}{%
@@ -177,9 +183,10 @@
 %------摘要环境------
 
 %------中文风格------
-\ifchsstyle
+\makeatletter
+\ifSDU@opt@chsstyle
 %----标题与日期----
-\CTEXoptions[figurename={图},tablename={表},bibname={参考文献},contentsname={目\quad{}录}]
+\CTEXoptions[figurename={图},tablename={表},bibname={参考文献},contentsname={目\quad{}{}录}]
 \CTEXoptions[today=small]
 %----标题与日期----
 %----章节样式----
@@ -189,7 +196,7 @@
 \CTEXsetup[format={\centering}]{chapter}
 \CTEXsetup[nameformat={\bfseries\zihao{3}}]{chapter}
 \CTEXsetup[titleformat={\bfseries\zihao{3}}]{chapter}
-\CTEXsetup[aftername={\quad}]{chapter}
+\CTEXsetup[aftername={\quad{}}]{chapter}
 \CTEXsetup[beforeskip={10pt}]{chapter}
 \CTEXsetup[afterskip={10pt}]{chapter}
 %--section
@@ -207,6 +214,7 @@
 \RequirePackage{indentfirst}
 %----首行缩进----
 \else\relax\fi
+\makeatletter
 %------中文风格------
 
 %------封面------
@@ -234,7 +242,7 @@
 \newcommand{\maketableofcontents}{%
 \pagenumbering{Roman}
 \tableofcontents
-\ifdprint
+\ifSDU@opt@double
 \cleardoublepage
 \else
 \clearpage
